@@ -1,0 +1,36 @@
+/* public/css/app.css */
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.profile-picture:hover {
+    transform: scale(1.1);
+    border-color: #ffcc00;
+}
+
+.navbar-brand {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+    color: #ffcc00;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #333;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #ffcc00;
+}
