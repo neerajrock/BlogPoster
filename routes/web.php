@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,15 +14,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/',[BlogController::class,'index'])->name('home');
+Auth::routes();
+Route::get('/profile',[ProfileController::class,'index'])->middleware('auth')->name('myprofile');
 
-Route::get('/', function () {
-    return view('homepage');
+Route::prefix('Blog')->controller(BlogController::class)->middleware('auth')->group(function(){
+    Route::post('/posted','storeblog')->name('add.blog.poter');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

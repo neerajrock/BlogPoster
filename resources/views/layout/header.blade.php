@@ -11,17 +11,18 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{{ asset('img/dbzprofile.webp') }}" class="profile-picture" alt="Profile Picture">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <p class="dropdown-item">{{auth()->user()->name}}</p>
-                        <a class="dropdown-item" href="{{ url('/add-blog') }}">Add Blog</a>
-                        <a class="dropdown-item" href="{{ url('/profile') }}">My Profile</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Log Out
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                    <div id="menudiv" style="margin-left: -76px;">
+                        <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
+                            <p class="dropdown-item">Welcome {{auth()->user()->name}}</p>
+                            <a class="dropdown-item" href="{{ route('myprofile') }}">My Profile</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Log Out
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
                     </div>
                 </div>
             @else
