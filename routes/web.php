@@ -21,3 +21,5 @@ Route::get('/profile',[ProfileController::class,'index'])->middleware('auth')->n
 Route::prefix('Blog')->controller(BlogController::class)->middleware('auth')->group(function(){
     Route::post('/posted','storeblog')->name('add.blog.poter');
 });
+
+Route::get('blog/details',[BlogController::class,'blogpagefun'])->name('blog.detals');

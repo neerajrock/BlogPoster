@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\blog;
 use App\Models\blogImage;
+use Illuminate\Support\Facades\Crypt;
 
 class BlogController extends Controller
 {
@@ -39,5 +40,12 @@ class BlogController extends Controller
         }else{
             return response()->json(['status'=>'fail','message'=>'Something went wrong']);
         }
+    }
+
+    public function blogpagefun(Request $request){
+        $id=Crypt::decrypt($request->blogid);
+        $blogs=blog::where('id',$id)->first();
+        $bloglist=blog::where('id','!=',$id)->orderBydesc('id')->get();
+        return view('blogdetailpage',['blogs'=>$blogs,'bloglist'=>$bloglist]);
     }
 }
